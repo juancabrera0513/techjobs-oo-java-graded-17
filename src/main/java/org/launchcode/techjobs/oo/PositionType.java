@@ -2,26 +2,27 @@ package org.launchcode.techjobs.oo;
 
 import java.util.Objects;
 
-public class PositionType {
+public class PositionType extends JobField {
 
     private int id;
     private static int nextId = 1;
-    private String value;
 
     public PositionType() {
+        super(null);
         id = nextId;
         nextId++;
     }
 
     public PositionType(String value) {
-        this();
-        this.value = value;
+        super(value);
+        id = nextId;
+        nextId++;
     }
 
     // TODO: Add a custom toString() method that returns the data stored in 'value'.
     @Override
     public String toString() {
-        return value;
+        return getValue() != null ? getValue() : "Data not available";
     }
 
 
@@ -47,12 +48,6 @@ public class PositionType {
         return id;
     }
 
-    public String getValue() {
-        return value;
-    }
 
-    public void setValue(String value) {
-        this.value = value;
-    }
 
 }

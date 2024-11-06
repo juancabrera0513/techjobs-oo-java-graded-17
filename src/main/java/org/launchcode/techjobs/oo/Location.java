@@ -2,13 +2,14 @@ package org.launchcode.techjobs.oo;
 
 import java.util.Objects;
 
-public class Location {
+public class Location extends JobField{
 
     private int id;
     private static int nextId = 1;
     private String value;
 
     public Location() {
+        super(null);
         id = nextId;
         nextId++;
     }
@@ -19,8 +20,9 @@ public class Location {
     //  constructor should also call the empty constructor in order to initialize the 'id' field.
 
     public Location(String value) {
-        this();
-        this.value = value;
+        super(value);
+        id = nextId;
+        nextId++;
     }
 
 
@@ -28,7 +30,7 @@ public class Location {
 
     @Override
     public String toString() {
-        return value;
+        return getValue() != null ? getValue() : "Data not available";
     }
 
     @Override
@@ -50,12 +52,5 @@ public class Location {
         return id;
     }
 
-    public String getValue() {
-        return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
-    }
 
 }
